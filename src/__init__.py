@@ -1,1 +1,1 @@
-"""AI_smart_mart package."""
+# AI_smart_mart package

@@ -14,7 +14,7 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# add your model's MetaData object here
+# adding the model's MetaData object here
 # for 'autogenerate' support
 import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
