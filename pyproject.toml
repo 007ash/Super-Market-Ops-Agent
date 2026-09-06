@@ -1,0 +1,33 @@
+[project]
+name = "kirana-pilot-agent"
+version = "0.1.0"
+description = "AI Supermarket Operations Agent for Indian Kirana Stores"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "python-telegram-bot>=21.4",
+    "sqlalchemy>=2.0.35",
+    "alembic>=1.13.2",
+    "psycopg2-binary>=2.9.9",
+    "litellm>=1.44.20",
+    "reportlab>=4.2.2",
+    "python-pptx>=1.0.2",
+    "pydantic>=2.8.2",
+    "pydantic-settings>=2.4.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src",
+  "/alembic",
+  "/alembic.ini",
+  "/README.md",
+  "/pyproject.toml",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: kiranapilot-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-kiranapilot}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  kirana-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kiranapilot-app
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/${POSTGRES_DB:-kiranapilot}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      TELEGRAM_BOT_USERNAME: ${TELEGRAM_BOT_USERNAME:-KiranaPilotBot}
+      TELEGRAM_POLLING_ENABLED: "true"
+      AI_PROVIDER: ${AI_PROVIDER:-gemini}
+      AI_MODEL: ${AI_MODEL:-gemini-1.5-flash}
+      AI_API_KEY: ${AI_API_KEY:-}
+      STORE_NAME: ${STORE_NAME:-Sri Lakshmi Supermarket}
+      STORE_GSTIN: ${STORE_GSTIN:-29AAAPL1234C1ZV}
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:
