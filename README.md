@@ -1,6 +1,6 @@
-# 🛒 KiranaPilot – AI Supermarket Operations Agent
+# 🛒 AI_smart_mart – AI Supermarket Operations Agent
 
-> **An autonomous conversational agent that runs an Indian kirana store / supermarket end-to-end through Telegram chat only — with an agent, not a menu.**
+> **An autonomous conversational agent that runs an Indian ai_smart_mart store / supermarket end-to-end through Telegram chat only — with an agent, not a menu.**
 
 [![Java 17](https://img.shields.io/badge/Java-17-orange.svg)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.3-brightgreen.svg)](https://spring.io/projects/spring-boot)
@@ -11,13 +11,13 @@
 
 ## 🤖 Telegram Bot Handle
 
-- **Live Telegram Bot**: [@MyKiranaPilot_bot](https://t.me/MyKiranaPilot_bot)
+- **Live Telegram Bot**: [@MyAI_smart_mart_bot](https://t.me/MyAI_smart_mart_bot)
 
 ---
 
 ## 1. Harness Choice & Architectural Rationale
 
-Rather than locking the domain into rigid, hardcoded if/else routing or a rigid graph state machine (which fails over dynamic human phrasing), **KiranaPilot** uses a **Tool-Calling Agent Harness** paired with **Atomic Domain Services**:
+Rather than locking the domain into rigid, hardcoded if/else routing or a rigid graph state machine (which fails over dynamic human phrasing), **AI_smart_mart** uses a **Tool-Calling Agent Harness** paired with **Atomic Domain Services**:
 
 1. **Model-Orchestrated Tool Calling**: The LLM autonomously observes shopkeeper phrasing, extracts intent, queries catalog data via tools, executes actions, and reasons over the tool responses in a loop.
 2. **Business Rules Live in Tools & Database, NOT Prompts**:
@@ -64,7 +64,7 @@ Telegram Message (Text / Voice / Command)
 
 ## 3. How the 9 "Hard Parts" Are Solved
 
-| # | Challenge | KiranaPilot Solution |
+| # | Challenge | AI_smart_mart Solution |
 |---|-----------|----------------------|
 | **1** | **Grounding** | Product existence, cost prices, selling prices, GST rates, and stock quantities are loaded strictly via tool execution against PostgreSQL. Prompt instructions forbid the model from hallucinating non-existent items or rates. |
 | **2** | **Oversell Guard** | Enforced at the SQL transaction layer: `UPDATE products SET quantity = quantity - :qty WHERE id = :id AND quantity >= :qty`. If affected rows = 0, transaction rolls back immediately with `InsufficientStockException`. Zero negative stock. |
@@ -147,14 +147,14 @@ The database comes pre-seeded with authentic Indian retail supermarket SKUs:
    ```
 4. Check logs:
    ```bash
-   docker compose logs -f kirana-agent
+   docker compose logs -f ai_smart_mart-agent
    ```
 
 ### Option B: Local Maven Execution
 
 1. Start PostgreSQL (e.g. via Docker):
    ```bash
-   docker run --name pg-kirana -e POSTGRES_DB=kiranapilot -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:16-alpine
+   docker run --name pg-ai_smart_mart -e POSTGRES_DB=ai_smart_mart -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:16-alpine
    ```
 2. Run test suite:
    ```bash
@@ -218,5 +218,5 @@ Agent:      📊 Store Sales Summary (2026-09-05):
 
 Shopkeeper: make this week's sales analysis deck
 Agent:      Generated Weekly Sales & Inventory Analysis Presentation Deck.
-            [Attached: KiranaPilot_Sales_Analysis_Deck.pptx]
+            [Attached: AI_smart_mart_Sales_Analysis_Deck.pptx]
 ```

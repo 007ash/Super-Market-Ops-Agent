@@ -22,7 +22,7 @@ from src.models import Base
 target_metadata = Base.metadata
 
 def get_url():
-    return os.environ.get("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/kiranapilot")
+    return os.environ.get("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/ai_smart_mart")
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode."""

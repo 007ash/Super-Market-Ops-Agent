@@ -1,4 +1,4 @@
--- V1__init_schema.sql: Core schema for KiranaPilot
+-- V1__init_schema.sql: Core schema for AI_smart_mart
 
 CREATE TABLE IF NOT EXISTS products (
     id BIGSERIAL PRIMARY KEY,

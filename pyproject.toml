@@ -1,7 +1,7 @@
 [project]
-name = "kirana-pilot-agent"
+name = "ai-smart-mart-agent"
 version = "0.1.0"
-description = "AI Supermarket Operations Agent for Indian Kirana Stores"
+description = "AI Supermarket Operations Agent for Indian AI_smart_mart Stores"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

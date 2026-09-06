@@ -3,10 +3,10 @@ version: '3.8'
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: kiranapilot-postgres
+    container_name: ai_smart_mart-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-kiranapilot}
+      POSTGRES_DB: ${POSTGRES_DB:-ai_smart_mart}
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
     ports:
@@ -19,19 +19,19 @@ services:
       timeout: 5s
       retries: 5
 
-  kirana-agent:
+  ai_smart_mart-agent:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: kiranapilot-app
+    container_name: ai_smart_mart-app
     restart: unless-stopped
     depends_on:
       postgres:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/${POSTGRES_DB:-kiranapilot}
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/${POSTGRES_DB:-ai_smart_mart}
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
-      TELEGRAM_BOT_USERNAME: ${TELEGRAM_BOT_USERNAME:-KiranaPilotBot}
+      TELEGRAM_BOT_USERNAME: ${TELEGRAM_BOT_USERNAME:-AI_smart_martBot}
       TELEGRAM_POLLING_ENABLED: "true"
       AI_PROVIDER: ${AI_PROVIDER:-gemini}
       AI_MODEL: ${AI_MODEL:-gemini-1.5-flash}

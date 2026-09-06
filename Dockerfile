@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-RUN groupadd -r kiranapilot && useradd -r -g kiranapilot kiranapilot
+RUN groupadd -r ai_smart_mart && useradd -r -g ai_smart_mart ai_smart_mart
 
 # Install dependencies for reportlab/psycopg2 if needed
 RUN apt-get update && apt-get install -y \
@@ -18,7 +18,7 @@ COPY src/ ./src/
 COPY alembic.ini ./
 COPY alembic/ ./alembic/
 
-USER kiranapilot
+USER ai_smart_mart
 
 EXPOSE 8080
 

@@ -1,9 +1,9 @@
 spring:
   application:
-    name: kiranapilot-agent
+    name: ai_smart_mart-agent
 
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/kiranapilot}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/ai_smart_mart}
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
     password: ${SPRING_DATASOURCE_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
@@ -26,8 +26,8 @@ spring:
 server:
   port: ${PORT:8080}
 
-# KiranaPilot Configuration
-kiranapilot:
+# AI_smart_mart Configuration
+ai_smart_mart:
   store:
     name: ${STORE_NAME:Sri Lakshmi Supermarket}
     gstin: ${STORE_GSTIN:33AAAPL1234C1ZV}
@@ -37,7 +37,7 @@ kiranapilot:
     state-code: ${STORE_STATE_CODE:29}
   telegram:
     bot-token: ${TELEGRAM_BOT_TOKEN:8884711474:AAEwVSSiaprvSdTDKa8Zes356dh3dezorFo}
-    bot-username: ${TELEGRAM_BOT_USERNAME:MyKiranaPilot_bot}
+    bot-username: ${TELEGRAM_BOT_USERNAME:MyAI_smart_mart_bot}
     polling-enabled: ${TELEGRAM_POLLING_ENABLED:true}
   ai:
     provider: ${AI_PROVIDER:gemini} # Supported: gemini, openai, anthropic, mock

@@ -13,7 +13,7 @@ spring:
   flyway:
     enabled: false
 
-kiranapilot:
+ai_smart_mart:
   telegram:
     polling-enabled: false
   ai:

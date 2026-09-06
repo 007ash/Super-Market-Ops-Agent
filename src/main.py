@@ -4,7 +4,7 @@ import time
 
 
 def main() -> int:
-    print("KiranaPilot starting...")
+    print("AI_smart_mart starting...")
     token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
     if not token or token == "your_telegram_bot_token_from_botfather":
         print("No TELEGRAM_BOT_TOKEN configured; starting in local demo mode.")
@@ -13,7 +13,7 @@ def main() -> int:
             while True:
                 time.sleep(60)
         except KeyboardInterrupt:
-            print("Shutting down KiranaPilot...")
+            print("Shutting down AI_smart_mart...")
             return 0
     print("Telegram bot token detected; app initialization would continue here.")
     return 0
