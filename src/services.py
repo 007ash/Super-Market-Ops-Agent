@@ -7,7 +7,12 @@ from .models import Product, Bill, BillItem, Customer, KhataTransaction, Invento
 class InventoryService:
     @staticmethod
     def get_product_by_name(db: Session, name: str):
-        return db.execute(select(Product).filter(Product.normalized_name.ilike(f"%{name.lower()}%"))).scalars().first()
+        # Try exact/ilike match first
+        prod = db.execute(select(Product).filter(Product.normalized_name.ilike(f"%{name.lower()}%"))).scalars().first()
+        if prod:
+            return prod
+        # Fallback to fuzzy search (pg_trgm)
+        return db.execute(select(Product).order_by(func.similarity(Product.normalized_name, name.lower()).desc())).scalars().first()
 
     @staticmethod
     def get_product_by_sku(db: Session, sku: str):

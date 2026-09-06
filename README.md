@@ -2,9 +2,7 @@
 
 > **An autonomous conversational agent that runs an Indian ai_smart_mart store / supermarket end-to-end through Telegram chat only — with an agent, not a menu.**
 
-[![Java 17](https://img.shields.io/badge/Java-17-orange.svg)](https://openjdk.org/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.3-brightgreen.svg)](https://spring.io/projects/spring-boot)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue.svg)](https://www.postgresql.org/)
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)\n[![FastAPI](https://img.shields.io/badge/FastAPI-0.110-green.svg)](https://fastapi.tiangolo.com/)\n[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue.svg)](https://www.postgresql.org/)
 [![Tests Passing](https://img.shields.io/badge/Tests-20%2F20%20Passing-success.svg)]()
 
 ---
@@ -22,7 +20,7 @@ Rather than locking the domain into rigid, hardcoded if/else routing or a rigid 
 1. **Model-Orchestrated Tool Calling**: The LLM autonomously observes shopkeeper phrasing, extracts intent, queries catalog data via tools, executes actions, and reasons over the tool responses in a loop.
 2. **Business Rules Live in Tools & Database, NOT Prompts**:
    - Oversell protection is guarded via atomic database queries (`UPDATE products SET quantity = quantity - :qty WHERE id = :id AND quantity >= :qty`).
-   - GST calculations (0%, 5%, 12%, 18%), 50/50 CGST/SGST splits, and half-up rounding are computed deterministically using `BigDecimal` in Java.
+   - GST calculations (0%, 5%, 12%, 18%), 50/50 CGST/SGST splits, and half-up rounding are computed deterministically using `Decimal` in Python.
    - Financial ledger balances are derived from immutable transaction logs.
 3. **Pluggable LLM Provider Layer**: Native support for **Google Gemini** (`gemini-1.5-flash`), **OpenAI** (`gpt-4o`), **Anthropic Claude** (`claude-3-5-sonnet`), or a high-fidelity **Mock test harness** for offline CI/CD test execution.
 
@@ -130,7 +128,7 @@ The database comes pre-seeded with authentic Indian retail supermarket SKUs:
 ## 6. Quickstart & Local Setup
 
 ### Prerequisites
-- **Java 17+**
+- **Python 3.11+**
 - **Docker & Docker Compose** (or local PostgreSQL)
 - **Telegram Bot Token** (from [@BotFather](https://t.me/BotFather))
 
@@ -150,7 +148,7 @@ The database comes pre-seeded with authentic Indian retail supermarket SKUs:
    docker compose logs -f ai_smart_mart-agent
    ```
 
-### Option B: Local Maven Execution
+### Option B: Local Python Execution
 
 1. Start PostgreSQL (e.g. via Docker):
    ```bash
@@ -158,11 +156,11 @@ The database comes pre-seeded with authentic Indian retail supermarket SKUs:
    ```
 2. Run test suite:
    ```bash
-   mvn clean test
+   pip install . && pytest
    ```
-3. Run Spring Boot application:
+3. Run FastAPI application:
    ```bash
-   mvn spring-boot:run
+   uvicorn src.main:app --reload
    ```
 
 ---

@@ -77,13 +77,13 @@ class AgentOrchestrator:
             return BillingService.finalize_bill(self.db, chat_id, args.get('payment_mode', 'CASH'))
         return {"error": "Unknown tool"}
 
-    def handle_message(self, user_message: str, chat_id: int):
+    async def handle_message(self, user_message: str, chat_id: int):
         messages = [
             {"role": "system", "content": "You are AI_smart_mart, an AI agent running a supermarket. Use tools to manage inventory, billing, and khata."},
             {"role": "user", "content": user_message}
         ]
         
-        response = litellm.completion(
+        response = await litellm.acompletion(
             model="gemini/gemini-1.5-flash",
             messages=messages,
             tools=tools,
@@ -105,7 +105,7 @@ class AgentOrchestrator:
             messages.append(message.model_dump())
             messages.extend(tool_results)
             
-            final_response = litellm.completion(
+            final_response = await litellm.acompletion(
                 model="gemini/gemini-1.5-flash",
                 messages=messages
             )
