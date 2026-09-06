@@ -29,7 +29,7 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/${POSTGRES_DB:-ai_smart_mart}
+      DATABASE_URL: postgresql://postgres:postgres@ai_smart_mart-postgres:5432/${POSTGRES_DB:-ai_smart_mart}
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
       TELEGRAM_BOT_USERNAME: ${TELEGRAM_BOT_USERNAME:-AI_smart_martBot}
       TELEGRAM_POLLING_ENABLED: "true"

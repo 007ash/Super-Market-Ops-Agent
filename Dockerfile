@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN groupadd -r ai_smart_mart && useradd -r -g ai_smart_mart ai_smart_mart
 
-# Install dependencies for reportlab/psycopg2 if needed
+# Install dependencies for reportlab/psycopg2
 RUN apt-get update && apt-get install -y \
     gcc \
     libpq-dev \
