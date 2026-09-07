@@ -5,14 +5,14 @@ WORKDIR /app
 
 RUN groupadd -r ai_smart_mart && useradd -r -g ai_smart_mart ai_smart_mart
 
-# Install dependencies for reportlab/psycopg2
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     gcc \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 COPY pyproject.toml README.md ./
-# Use pip to install dependencies from pyproject.toml
+# Use pip to install for pyproject.toml
 RUN pip install --no-cache-dir .
 
 COPY src/ ./src/
