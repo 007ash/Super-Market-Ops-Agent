@@ -34,8 +34,9 @@ services:
       TELEGRAM_BOT_USERNAME: ${TELEGRAM_BOT_USERNAME:-AI_smart_martBot}
       TELEGRAM_POLLING_ENABLED: "true"
       AI_PROVIDER: ${AI_PROVIDER:-gemini}
-      AI_MODEL: ${AI_MODEL:-gemini-1.5-flash}
+      AI_MODEL: ${AI_MODEL:-gemini-3.6-flash}
       AI_API_KEY: ${AI_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-${AI_API_KEY:-}}
       STORE_NAME: ${STORE_NAME:-Sri Lakshmi Supermarket}
       STORE_GSTIN: ${STORE_GSTIN:-29AAAPL1234C1ZV}
     ports:

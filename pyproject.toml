@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [project]
 name = "ai-smart-mart-agent"
 version = "0.1.0"
@@ -34,3 +35,41 @@ include = [
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+=======
+[project]
+name = "ai-smart-mart-agent"
+version = "0.1.0"
+description = "AI Supermarket Operations Agent for Indian AI_smart_mart Stores"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "python-telegram-bot>=21.4",
+    "sqlalchemy>=2.0.35",
+    "alembic>=1.13.2",
+    "psycopg2-binary>=2.9.9",
+    "litellm>=1.44.20",
+    "reportlab>=4.2.2",
+    "python-pptx>=1.0.2",
+    "pydantic>=2.8.2",
+    "pydantic-settings>=2.4.0",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.27.0",
+    "apscheduler>=3.10.4",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src",
+  "/alembic",
+  "/alembic.ini",
+  "/README.md",
+  "/pyproject.toml",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+>>>>>>> 8de1ce629f7c74c8ac1e5651bf44045da214d056
