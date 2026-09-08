@@ -9,7 +9,7 @@
 
 ## 🤖 Telegram Bot Handle
 
-- **Live Telegram Bot**: [@MyAI_smart_mart_bot](https://t.me/MyAI_smart_mart_bot)
+- **Live Telegram Bot**: [@smart_mart](https://t.me/AI_super_mart_bot)
 
 ---
 
